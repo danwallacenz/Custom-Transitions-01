@@ -8,8 +8,40 @@
 
 #import "DWAppDelegate.h"
 #import "DWFirstViewController.h"
+#import "DWAnimator.h"
+
+
+@interface DWAppDelegate()
+
+@property (strong, nonatomic) DWAnimator *animator;
+@end
 
 @implementation DWAppDelegate
+
+
+#pragma mark - UINavigationControllerDelegate
+
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                  animationControllerForOperation:(UINavigationControllerOperation)operation
+                                               fromViewController:(UIViewController *)fromVC
+                                                 toViewController:(UIViewController *)toVC
+{
+    if (operation == UINavigationControllerOperationPush) {
+        return self.animator;
+    }
+    return nil;
+}
+
+-(DWAnimator *)animator
+{
+    if(!_animator){
+        _animator = [[DWAnimator alloc] init];
+    }
+    return _animator;
+}
+
+
+#pragma mark - App lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -20,6 +52,7 @@
     UIViewController *first = [[DWFirstViewController alloc] init];
     
     UINavigationController *navController=[[UINavigationController alloc] initWithRootViewController: first];
+    navController.delegate = self;
     
     [self.window setRootViewController:navController];
     
