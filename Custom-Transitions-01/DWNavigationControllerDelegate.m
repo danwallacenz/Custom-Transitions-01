@@ -7,14 +7,15 @@
 //
 
 #import "DWNavigationControllerDelegate.h"
-#import "DWAnimator.h"
+#import "DWPushAnimator.h"
+#import "DWPopAnimator.h"
 #import "DWFirstViewController.h"
 #import "DWSecondViewController.h"
 
 
 @interface DWNavigationControllerDelegate()
 
-@property (strong, nonatomic) DWAnimator *animator;
+//@property (strong, nonatomic) DWAnimator *animator;
 @property (strong, nonatomic) UINavigationController *navigationController;
 @property (strong, nonatomic) UIPercentDrivenInteractiveTransition *interactionController;
 
@@ -59,20 +60,23 @@
                                                fromViewController:(UIViewController *)fromVC
                                                  toViewController:(UIViewController *)toVC
 {
-    //    if (operation == UINavigationControllerOperationPush) {
-    return self.animator;
-    //    }
-    //    return nil;
+    if (operation == UINavigationControllerOperationPush) {
+        return [[DWPushAnimator alloc] init];
+    }
+    if (operation == UINavigationControllerOperationPop) {
+        return [[DWPopAnimator alloc] init];
+    }
+    return nil;
     
 }
 
--(DWAnimator *)animator
-{
-    if(!_animator){
-        _animator = [[DWAnimator alloc] init];
-    }
-    return _animator;
-}
+//-(DWAnimator *)animator
+//{
+//    if(!_animator){
+//        _animator = [[DWAnimator alloc] init];
+//    }
+//    return _animator;
+//}
 
 
 -(void)pan:(UIPanGestureRecognizer*)recognizer
@@ -90,14 +94,14 @@
                 [self.navigationController popViewControllerAnimated:YES];
             }
         }
-        
+    
         if (location.x >  CGRectGetMidX(view.bounds) && self.navigationController.viewControllers.count == 1) { // right half
             if([self.navigationController.topViewController isKindOfClass:[DWFirstViewController class]]){
                 self.interactionController = [UIPercentDrivenInteractiveTransition new];
                 [self.navigationController pushViewController: [[DWSecondViewController alloc] init] animated:YES];
             }
         }
-        
+    
     } else if (recognizer.state == UIGestureRecognizerStateChanged) {
         
         CGPoint translation = [recognizer translationInView:view];
@@ -108,31 +112,22 @@
         
         NSLog(@"velocityInView = %f", [recognizer velocityInView:view].x);
         
+        NSLog(@"percentComplete = %f", self.interactionController.percentComplete);
+        
         if(self.navigationController.viewControllers.count > 1){ //pop
-            if([recognizer velocityInView:view].x < 0  && self.interactionController.percentComplete > .5){
+            if([recognizer velocityInView:view].x < 0  && self.interactionController.percentComplete > .3){
                 [self.interactionController finishInteractiveTransition];
             } else {
                 [self.interactionController cancelInteractiveTransition];
             }
         }else{ // push
-            if([recognizer velocityInView:view].x > 0 && self.interactionController.percentComplete > .5){
+            
+            if([recognizer velocityInView:view].x > 0 && self.interactionController.percentComplete > .3){
                 [self.interactionController finishInteractiveTransition];
             } else {
                 [self.interactionController cancelInteractiveTransition];
             }
         }
-        
-        //        if (([recognizer velocityInView:view].x > 0 && [self.navigationController.topViewController isKindOfClass:[DWSecondViewController class]])) {
-        //            [self.interactionController finishInteractiveTransition];
-        //        } else {
-        //            [self.interactionController cancelInteractiveTransition];
-        //        }
-        //
-        //        if(([recognizer velocityInView:view].x < 0 && [self.navigationController.topViewController isKindOfClass:[DWFirstViewController class]])) {
-        //            [self.interactionController finishInteractiveTransition];
-        //        } else {
-        //            [self.interactionController cancelInteractiveTransition];
-        //        }
         
         self.interactionController = nil;
     }

@@ -23,6 +23,8 @@
 		E05B78AC19A5507C001F7B7D /* DWSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E05B78AB19A5507C001F7B7D /* DWSecondViewController.m */; };
 		E05B78AF19A561C2001F7B7D /* DWAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = E05B78AE19A561C2001F7B7D /* DWAnimator.m */; };
 		E065ED4B19A6A3B60020F408 /* DWNavigationControllerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E065ED4A19A6A3B60020F408 /* DWNavigationControllerDelegate.m */; };
+		E065ED4E19A6B73D0020F408 /* DWPushAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = E065ED4D19A6B73D0020F408 /* DWPushAnimator.m */; };
+		E065ED5119A6B7520020F408 /* DWPopAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = E065ED5019A6B7520020F408 /* DWPopAnimator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,10 @@
 		E05B78AE19A561C2001F7B7D /* DWAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWAnimator.m; sourceTree = "<group>"; };
 		E065ED4919A6A3B60020F408 /* DWNavigationControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNavigationControllerDelegate.h; sourceTree = "<group>"; };
 		E065ED4A19A6A3B60020F408 /* DWNavigationControllerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWNavigationControllerDelegate.m; sourceTree = "<group>"; };
+		E065ED4C19A6B73D0020F408 /* DWPushAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPushAnimator.h; sourceTree = "<group>"; };
+		E065ED4D19A6B73D0020F408 /* DWPushAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPushAnimator.m; sourceTree = "<group>"; };
+		E065ED4F19A6B7520020F408 /* DWPopAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPopAnimator.h; sourceTree = "<group>"; };
+		E065ED5019A6B7520020F408 /* DWPopAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPopAnimator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +131,10 @@
 				E065ED4A19A6A3B60020F408 /* DWNavigationControllerDelegate.m */,
 				E05B78AD19A561C2001F7B7D /* DWAnimator.h */,
 				E05B78AE19A561C2001F7B7D /* DWAnimator.m */,
+				E065ED4C19A6B73D0020F408 /* DWPushAnimator.h */,
+				E065ED4D19A6B73D0020F408 /* DWPushAnimator.m */,
+				E065ED4F19A6B7520020F408 /* DWPopAnimator.h */,
+				E065ED5019A6B7520020F408 /* DWPopAnimator.m */,
 				E05B78A719A5506C001F7B7D /* DWFirstViewController.h */,
 				E05B78A819A5506C001F7B7D /* DWFirstViewController.m */,
 				E05B78AA19A5507C001F7B7D /* DWSecondViewController.h */,
@@ -263,9 +273,11 @@
 				E05B788519A54E55001F7B7D /* main.m in Sources */,
 				E05B78AC19A5507C001F7B7D /* DWSecondViewController.m in Sources */,
 				E065ED4B19A6A3B60020F408 /* DWNavigationControllerDelegate.m in Sources */,
+				E065ED4E19A6B73D0020F408 /* DWPushAnimator.m in Sources */,
 				E05B78A919A5506C001F7B7D /* DWFirstViewController.m in Sources */,
 				E05B788919A54E55001F7B7D /* DWAppDelegate.m in Sources */,
 				E05B78AF19A561C2001F7B7D /* DWAnimator.m in Sources */,
+				E065ED5119A6B7520020F408 /* DWPopAnimator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
