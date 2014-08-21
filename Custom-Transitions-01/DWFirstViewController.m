@@ -51,7 +51,7 @@
                                                           attribute:NSLayoutAttributeCenterY
                                                           multiplier:1
                                                            constant:0]];
-    self.view.backgroundColor = [UIColor blackColor];
+    self.view.backgroundColor = [UIColor orangeColor];
     
     self.title = @"First";
 }

@@ -26,10 +26,11 @@
                                                fromViewController:(UIViewController *)fromVC
                                                  toViewController:(UIViewController *)toVC
 {
-    if (operation == UINavigationControllerOperationPush) {
+//    if (operation == UINavigationControllerOperationPush) {
         return self.animator;
-    }
-    return nil;
+//    }
+//    return nil;
+
 }
 
 -(DWAnimator *)animator
@@ -52,6 +53,7 @@
     UIViewController *first = [[DWFirstViewController alloc] init];
     
     UINavigationController *navController=[[UINavigationController alloc] initWithRootViewController: first];
+    
     navController.delegate = self;
     
     [self.window setRootViewController:navController];
