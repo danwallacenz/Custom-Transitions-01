@@ -8,6 +8,7 @@
 
 #import "DWFirstViewController.h"
 #import "DWSecondViewController.h"
+#import "DWNavigationControllerDelegate.h"
 
 @interface DWFirstViewController ()
 
@@ -15,14 +16,14 @@
 
 @implementation DWFirstViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+//- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+//{
+//    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+//    if (self) {
+//        // Custom initialization
+//    }
+//    return self;
+//}
 
 - (void)viewDidLoad
 {
@@ -54,6 +55,10 @@
     self.view.backgroundColor = [UIColor orangeColor];
     
     self.title = @"First";
+    
+//    DWNavigationControllerDelegate *dwNavigationControllerDelegate = [[DWNavigationControllerDelegate alloc] init];//]WithNavigationController:self.navigationController];
+//    
+//    self.navigationController.delegate = dwNavigationControllerDelegate;
 }
 
 

@@ -22,6 +22,7 @@
 		E05B78A919A5506C001F7B7D /* DWFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E05B78A819A5506C001F7B7D /* DWFirstViewController.m */; };
 		E05B78AC19A5507C001F7B7D /* DWSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E05B78AB19A5507C001F7B7D /* DWSecondViewController.m */; };
 		E05B78AF19A561C2001F7B7D /* DWAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = E05B78AE19A561C2001F7B7D /* DWAnimator.m */; };
+		E065ED4B19A6A3B60020F408 /* DWNavigationControllerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E065ED4A19A6A3B60020F408 /* DWNavigationControllerDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,8 @@
 		E05B78AB19A5507C001F7B7D /* DWSecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWSecondViewController.m; sourceTree = "<group>"; };
 		E05B78AD19A561C2001F7B7D /* DWAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWAnimator.h; sourceTree = "<group>"; };
 		E05B78AE19A561C2001F7B7D /* DWAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWAnimator.m; sourceTree = "<group>"; };
+		E065ED4919A6A3B60020F408 /* DWNavigationControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNavigationControllerDelegate.h; sourceTree = "<group>"; };
+		E065ED4A19A6A3B60020F408 /* DWNavigationControllerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWNavigationControllerDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +121,8 @@
 			children = (
 				E05B788719A54E55001F7B7D /* DWAppDelegate.h */,
 				E05B788819A54E55001F7B7D /* DWAppDelegate.m */,
+				E065ED4919A6A3B60020F408 /* DWNavigationControllerDelegate.h */,
+				E065ED4A19A6A3B60020F408 /* DWNavigationControllerDelegate.m */,
 				E05B78AD19A561C2001F7B7D /* DWAnimator.h */,
 				E05B78AE19A561C2001F7B7D /* DWAnimator.m */,
 				E05B78A719A5506C001F7B7D /* DWFirstViewController.h */,
@@ -257,6 +262,7 @@
 			files = (
 				E05B788519A54E55001F7B7D /* main.m in Sources */,
 				E05B78AC19A5507C001F7B7D /* DWSecondViewController.m in Sources */,
+				E065ED4B19A6A3B60020F408 /* DWNavigationControllerDelegate.m in Sources */,
 				E05B78A919A5506C001F7B7D /* DWFirstViewController.m in Sources */,
 				E05B788919A54E55001F7B7D /* DWAppDelegate.m in Sources */,
 				E05B78AF19A561C2001F7B7D /* DWAnimator.m in Sources */,
@@ -458,6 +464,7 @@
 				E05B78A319A54E55001F7B7D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E05B78A419A54E55001F7B7D /* Build configuration list for PBXNativeTarget "Custom-Transitions-01Tests" */ = {
 			isa = XCConfigurationList;
@@ -466,6 +473,7 @@
 				E05B78A619A54E55001F7B7D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
