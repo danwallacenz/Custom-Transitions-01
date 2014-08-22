@@ -32,8 +32,8 @@
                                               fromViewController.view.bounds.size.width,
                                               fromViewController.view.bounds.size.height);
     
-    toViewController.view.userInteractionEnabled = NO;
-    fromViewController.view.userInteractionEnabled = NO;
+//    toViewController.view.userInteractionEnabled = NO;
+//    fromViewController.view.userInteractionEnabled = NO;
     
     CGRect endFrame = CGRectMake(fromViewController.view.bounds.size.width, 0,
                                  fromViewController.view.bounds.size.width,
@@ -49,19 +49,18 @@
                          toViewController.view.frame = fromViewController.view.frame;
                          fromViewController.view.frame = endFrame;
                          
-
-                         
                          
                      } completion:^(BOOL finished) {
                          
                          [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
                          
                          if(![transitionContext transitionWasCancelled]){
-                              [fromViewController.view removeFromSuperview];
+                             [fromViewController.view removeFromSuperview];
+                             toViewController.navigationController.title = toViewController.title;
                          }
                         
-                         toViewController.view.userInteractionEnabled = YES;
-                         fromViewController.view.userInteractionEnabled = YES;
+//                         toViewController.view.userInteractionEnabled = YES;
+//                         fromViewController.view.userInteractionEnabled = YES;
                          NSLog(@"POP - %d view controllers present", toViewController.navigationController.viewControllers.count);
                      }];
 }

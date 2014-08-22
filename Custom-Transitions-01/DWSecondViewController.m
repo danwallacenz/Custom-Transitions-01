@@ -52,6 +52,7 @@
                                                            constant:0]];
     
     self.view.backgroundColor = [UIColor redColor];
+    
     self.title = @"Second";
 }
 

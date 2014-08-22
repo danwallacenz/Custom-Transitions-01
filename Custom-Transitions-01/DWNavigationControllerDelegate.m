@@ -114,18 +114,22 @@
         
         NSLog(@"percentComplete = %f", self.interactionController.percentComplete);
         
-        if(self.navigationController.viewControllers.count > 1){ //pop
+        if(self.navigationController.viewControllers.count > 1){ //push
             if([recognizer velocityInView:view].x < 0  && self.interactionController.percentComplete > .3){
                 [self.interactionController finishInteractiveTransition];
+                NSLog(@"push - finishInteractiveTransition");
             } else {
                 [self.interactionController cancelInteractiveTransition];
+                NSLog(@"push - cancelInteractiveTransition");
             }
-        }else{ // push
+        }else{ // pop
             
             if([recognizer velocityInView:view].x > 0 && self.interactionController.percentComplete > .3){
                 [self.interactionController finishInteractiveTransition];
+                NSLog(@"pop - finishInteractiveTransition");
             } else {
                 [self.interactionController cancelInteractiveTransition];
+                NSLog(@"pop - cancelInteractiveTransition");
             }
         }
         

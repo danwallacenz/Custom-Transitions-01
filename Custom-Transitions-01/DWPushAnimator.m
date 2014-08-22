@@ -35,8 +35,8 @@
                                  fromViewController.view.bounds.size.width,
                                  fromViewController.view.bounds.size.height);
     
-    toViewController.view.userInteractionEnabled = NO;
-    fromViewController.view.userInteractionEnabled = NO;
+//    toViewController.view.userInteractionEnabled = NO;
+//    fromViewController.view.userInteractionEnabled = NO;
     
     [UIView animateWithDuration:[self transitionDuration:transitionContext]
                           delay:0
@@ -53,10 +53,11 @@
                          
                          if(![transitionContext transitionWasCancelled]){
                              [fromViewController.view removeFromSuperview];
+                             toViewController.navigationController.title = toViewController.title;
                          }
                          
-                         toViewController.view.userInteractionEnabled = YES;
-                         fromViewController.view.userInteractionEnabled = YES;
+//                         toViewController.view.userInteractionEnabled = YES;
+//                         fromViewController.view.userInteractionEnabled = YES;
                           NSLog(@"PUSH - %d view controllers present", toViewController.navigationController.viewControllers.count);
                      }];
 }
