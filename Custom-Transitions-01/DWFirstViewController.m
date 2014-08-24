@@ -56,9 +56,8 @@
     
     self.title = @"First";
     
-//    DWNavigationControllerDelegate *dwNavigationControllerDelegate = [[DWNavigationControllerDelegate alloc] init];//]WithNavigationController:self.navigationController];
-//    
-//    self.navigationController.delegate = dwNavigationControllerDelegate;
+    UIViewController *second = [[DWSecondViewController alloc] init];
+    [self.navigationController pushViewController:second animated:NO];
 }
 
 
