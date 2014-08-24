@@ -44,14 +44,16 @@
 
 
 
--(void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+-(void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController
+                   animated:(BOOL)animated
 {
-    NSLog(@"willShowViewController");
+    NSLog(@"willShowViewController %@", [[navigationController.topViewController class] description]);
 }
 
--(void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+-(void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController
+                   animated:(BOOL)animated
 {
-    NSLog(@"didShowViewController");
+    NSLog(@"didShowViewController %@\n\n", [[navigationController.topViewController class] description]);
 }
 
 
@@ -81,11 +83,12 @@
 
 -(void)pan:(UIPanGestureRecognizer*)recognizer
 {
-    NSLog(@"pan:");
+//    NSLog(@"pan:");
     
     UIView *view = self.navigationController.topViewController.view;
     
     if (recognizer.state == UIGestureRecognizerStateBegan) {
+        
         CGPoint location = [recognizer locationInView:view];
         
         if (location.x <  CGRectGetMidX(view.bounds) && self.navigationController.viewControllers.count > 1) { // left half
@@ -110,9 +113,9 @@
         
     } else if (recognizer.state == UIGestureRecognizerStateEnded) {
         
-        NSLog(@"velocityInView = %f", [recognizer velocityInView:view].x);
-        
-        NSLog(@"percentComplete = %f", self.interactionController.percentComplete);
+//        NSLog(@"velocityInView = %f", [recognizer velocityInView:view].x);
+//        
+//        NSLog(@"percentComplete = %f", self.interactionController.percentComplete);
         
         if(self.navigationController.viewControllers.count > 1){ //push
             if([recognizer velocityInView:view].x < 0  && self.interactionController.percentComplete > .3){

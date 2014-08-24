@@ -50,9 +50,9 @@
 - (void)animationEnded:(BOOL)transitionCompleted
 {
     if(transitionCompleted){
-        NSLog(@"animationEnded OK ");
+        NSLog(@"animationEnded Completed ");
     }else{
-         NSLog(@"animationEnded NOT OK ");
+         NSLog(@"animationEnded NOT Completed ");
     }
 }
 

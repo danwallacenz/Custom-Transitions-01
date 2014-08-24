@@ -17,15 +17,15 @@
     
     [[transitionContext containerView] addSubview:toViewController.view];
     
-    NSLog(@"initialFrameForViewController:fromViewController = %@", NSStringFromCGRect([transitionContext initialFrameForViewController:fromViewController]));
-    NSLog(@"initialFrameForViewController:toViewController = %@", NSStringFromCGRect([transitionContext initialFrameForViewController:toViewController]));
-    
-    
-    NSLog(@"finalFrameForViewController:fromViewController = %@", NSStringFromCGRect([transitionContext finalFrameForViewController:fromViewController]));
-    NSLog(@"finalFrameForViewController:toViewController = %@", NSStringFromCGRect([transitionContext finalFrameForViewController:toViewController]));
-    
-    NSLog(@"isAnimated = %@", [transitionContext isAnimated]?@"YES":@"NO");
-    NSLog(@"isInteractive = %@", [transitionContext isInteractive]?@"YES":@"NO");
+//    NSLog(@"initialFrameForViewController:fromViewController = %@", NSStringFromCGRect([transitionContext initialFrameForViewController:fromViewController]));
+//    NSLog(@"initialFrameForViewController:toViewController = %@", NSStringFromCGRect([transitionContext initialFrameForViewController:toViewController]));
+//    
+//    
+//    NSLog(@"finalFrameForViewController:fromViewController = %@", NSStringFromCGRect([transitionContext finalFrameForViewController:fromViewController]));
+//    NSLog(@"finalFrameForViewController:toViewController = %@", NSStringFromCGRect([transitionContext finalFrameForViewController:toViewController]));
+//    
+//    NSLog(@"isAnimated = %@", [transitionContext isAnimated]?@"YES":@"NO");
+//    NSLog(@"isInteractive = %@", [transitionContext isInteractive]?@"YES":@"NO");
     
     
     toViewController.view.frame =  CGRectMake(-fromViewController.view.bounds.size.width, 0,
@@ -61,7 +61,7 @@
                         
 //                         toViewController.view.userInteractionEnabled = YES;
 //                         fromViewController.view.userInteractionEnabled = YES;
-                         NSLog(@"POP - %d view controllers present", toViewController.navigationController.viewControllers.count);
+                         NSLog(@"POP completion - %d view controllers present\n\n", toViewController.navigationController.viewControllers.count);
                      }];
 }
 
