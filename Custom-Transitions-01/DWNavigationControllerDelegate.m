@@ -15,7 +15,6 @@
 
 @interface DWNavigationControllerDelegate()
 
-//@property (strong, nonatomic) DWAnimator *animator;
 @property (strong, nonatomic) UINavigationController *navigationController;
 @property (strong, nonatomic) UIPercentDrivenInteractiveTransition *interactionController;
 
@@ -42,21 +41,6 @@
 
 #pragma mark - UINavigationControllerDelegate
 
-
-
--(void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController
-                   animated:(BOOL)animated
-{
-    NSLog(@"willShowViewController %@", [[navigationController.topViewController class] description]);
-}
-
--(void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController
-                   animated:(BOOL)animated
-{
-    NSLog(@"didShowViewController %@\n\n", [[navigationController.topViewController class] description]);
-}
-
-
 - (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
                                   animationControllerForOperation:(UINavigationControllerOperation)operation
                                                fromViewController:(UIViewController *)fromVC
@@ -72,19 +56,9 @@
     
 }
 
-//-(DWAnimator *)animator
-//{
-//    if(!_animator){
-//        _animator = [[DWAnimator alloc] init];
-//    }
-//    return _animator;
-//}
-
 
 -(void)pan:(UIPanGestureRecognizer*)recognizer
 {
-//    NSLog(@"pan:");
-    
     UIView *view = self.navigationController.topViewController.view;
     
     if (recognizer.state == UIGestureRecognizerStateBegan) {
@@ -113,26 +87,19 @@
         
     } else if (recognizer.state == UIGestureRecognizerStateEnded) {
         
-//        NSLog(@"velocityInView = %f", [recognizer velocityInView:view].x);
-//        
-//        NSLog(@"percentComplete = %f", self.interactionController.percentComplete);
-        
-        if(self.navigationController.viewControllers.count > 1){ //push
+        if(self.navigationController.viewControllers.count > 1){
+            //push
             if([recognizer velocityInView:view].x < 0  && self.interactionController.percentComplete > .3){
                 [self.interactionController finishInteractiveTransition];
-                NSLog(@"push - finishInteractiveTransition");
             } else {
                 [self.interactionController cancelInteractiveTransition];
-                NSLog(@"push - cancelInteractiveTransition");
             }
         }else{ // pop
             
             if([recognizer velocityInView:view].x > 0 && self.interactionController.percentComplete > .3){
                 [self.interactionController finishInteractiveTransition];
-                NSLog(@"pop - finishInteractiveTransition");
             } else {
                 [self.interactionController cancelInteractiveTransition];
-                NSLog(@"pop - cancelInteractiveTransition");
             }
         }
         

@@ -16,16 +16,6 @@
     UIViewController* fromViewController = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     
     [[transitionContext containerView] addSubview:toViewController.view];
-
-//    NSLog(@"initialFrameForViewController:fromViewController = %@", NSStringFromCGRect([transitionContext initialFrameForViewController:fromViewController]));
-//    NSLog(@"initialFrameForViewController:toViewController = %@", NSStringFromCGRect([transitionContext initialFrameForViewController:toViewController]));
-//    
-//    
-//    NSLog(@"finalFrameForViewController:fromViewController = %@", NSStringFromCGRect([transitionContext finalFrameForViewController:fromViewController]));
-//    NSLog(@"finalFrameForViewController:toViewController = %@", NSStringFromCGRect([transitionContext finalFrameForViewController:toViewController]));
-//    
-//    NSLog(@"isAnimated = %@", [transitionContext isAnimated]?@"YES":@"NO");
-//    NSLog(@"isInteractive = %@", [transitionContext isInteractive]?@"YES":@"NO");
     
     toViewController.view.frame =  CGRectMake(fromViewController.view.bounds.size.width, 0,
                                              fromViewController.view.bounds.size.width,
@@ -35,8 +25,6 @@
                                  fromViewController.view.bounds.size.width,
                                  fromViewController.view.bounds.size.height);
     
-//    toViewController.view.userInteractionEnabled = NO;
-//    fromViewController.view.userInteractionEnabled = NO;
     
     [UIView animateWithDuration:[self transitionDuration:transitionContext]
                           delay:0
@@ -55,10 +43,7 @@
                              [fromViewController.view removeFromSuperview];
                              toViewController.navigationController.title = toViewController.title;
                          }
-                         
-//                         toViewController.view.userInteractionEnabled = YES;
-//                         fromViewController.view.userInteractionEnabled = YES;
-                          NSLog(@"PUSH completion - %d view controllers present\n\n", toViewController.navigationController.viewControllers.count);
+//                          NSLog(@"PUSH completion - %d view controllers present\n\n", toViewController.navigationController.viewControllers.count);
                      }];
 }
 

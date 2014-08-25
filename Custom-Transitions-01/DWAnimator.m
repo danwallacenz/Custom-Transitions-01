@@ -13,9 +13,12 @@
 
 - (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext
 {
-    return 0.4;
+    return 0.2;
 }
 
+/**
+ To be overridden by subclasses.
+ */
 - (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext
 {
     UIViewController* toViewController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
@@ -35,24 +38,15 @@
                      } completion:^(BOOL finished) {
                          fromViewController.view.transform = CGAffineTransformIdentity;
                          [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
-                     }];
-    
-//    [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
-//        fromViewController.view.transform = CGAffineTransformMakeScale(0.1, 0.1);
-//        toViewController.view.alpha = 1;
-//    } completion:^(BOOL finished) {
-//        fromViewController.view.transform = CGAffineTransformIdentity;
-//        [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
-//    }];
-    
+                     }];    
 }
 
 - (void)animationEnded:(BOOL)transitionCompleted
 {
     if(transitionCompleted){
-        NSLog(@"animationEnded Completed ");
+//        NSLog(@"animationEnded Completed ");
     }else{
-         NSLog(@"animationEnded NOT Completed ");
+//         NSLog(@"animationEnded NOT Completed ");
     }
 }
 
