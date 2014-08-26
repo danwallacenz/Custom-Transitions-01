@@ -7,6 +7,7 @@
 //
 
 #import "DWSecondViewController.h"
+#import "DWPresentedViewController.h"
 
 @interface DWSecondViewController ()
 
@@ -14,6 +15,11 @@
 
 @implementation DWSecondViewController
 
+-(void) dismissPresentedVC:(UIViewController *) presentedVC{
+    [presentedVC dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"dismissPresentedVC");
+    }];
+}
 
 - (void)viewDidLoad
 {
@@ -43,6 +49,29 @@
                                                          multiplier:1
                                                            constant:0]];
     
+    UIButton *thirdBtn = [UIButton  buttonWithType:UIButtonTypeContactAdd];
+    [thirdBtn addTarget:self  action:@selector(thirdButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:thirdBtn];
+    
+    [thirdBtn setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
+    // Center button in view.
+	[self.view addConstraint:[NSLayoutConstraint constraintWithItem:thirdBtn
+                                                          attribute:NSLayoutAttributeCenterX
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.view
+                                                          attribute:NSLayoutAttributeCenterX
+                                                         multiplier:1
+                                                           constant:0]];
+    
+	[self.view addConstraint:[NSLayoutConstraint constraintWithItem:thirdBtn
+                                                          attribute:NSLayoutAttributeCenterY
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:firstBtn
+                                                          attribute:NSLayoutAttributeCenterY
+                                                         multiplier:1
+                                                           constant:60]];
+    
     self.view.backgroundColor = [UIColor redColor];
     
     self.title = @"Second";
@@ -59,6 +88,19 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+-(void) thirdButtonPressed
+{
+    NSLog(@"thirdButtonPressed");
+    DWPresentedViewController *presentedVC =  [[DWPresentedViewController alloc] init];
+    presentedVC.delegate = self;
+    UINavigationController *wrapper = [[UINavigationController alloc] initWithRootViewController:presentedVC];
+
+    [self presentViewController:wrapper animated:YES
+                     completion:^{
+        NSLog(@"DWPresentedViewController presented.");
+    }];
+    
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

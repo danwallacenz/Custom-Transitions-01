@@ -32,6 +32,22 @@
     
     self.title = @"Presented";
     
+//    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Second"
+//                                                                              style:UIBarButtonItemStylePlain
+//                                                                             target:self
+//                                                                             action:@selector(back)]];
+    
+    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                                                            target:self
+                                                                                            action:@selector(back)]];
+
+    NSLog(@"viewDidLoad");
+}
+
+-(void)back
+{
+    NSLog(@"back");
+    [self.delegate dismissPresentedVC:self];
 }
 
 - (void)didReceiveMemoryWarning

@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DWSecondViewController : UIViewController
+@protocol PresentingVC <NSObject>
+
+-(void) dismissPresentedVC:(UIViewController *) presentedVC;
+
+@end
+
+@interface DWSecondViewController : UIViewController<PresentingVC>
 
 @end

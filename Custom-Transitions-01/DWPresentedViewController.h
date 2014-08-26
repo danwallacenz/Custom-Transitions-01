@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DWSecondViewController.h"
 
 @interface DWPresentedViewController : UIViewController
+
+@property id<PresentingVC>delegate;
 
 @end
