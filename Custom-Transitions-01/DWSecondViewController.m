@@ -7,6 +7,7 @@
 //
 
 #import "DWSecondViewController.h"
+#import "DWThirdViewController.h"
 
 @interface DWSecondViewController ()
 
@@ -43,6 +44,31 @@
                                                          multiplier:1
                                                            constant:0]];
     
+    
+    UIButton *thirdBtn = [UIButton  buttonWithType:UIButtonTypeContactAdd];
+    [thirdBtn addTarget:self  action:@selector(thirdButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:thirdBtn];
+    
+    [thirdBtn setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
+    // Center button in view.
+	[self.view addConstraint:[NSLayoutConstraint constraintWithItem:thirdBtn
+                                                          attribute:NSLayoutAttributeCenterX
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.view
+                                                          attribute:NSLayoutAttributeCenterX
+                                                         multiplier:1
+                                                           constant:0]];
+    
+	[self.view addConstraint:[NSLayoutConstraint constraintWithItem:thirdBtn
+                                                          attribute:NSLayoutAttributeCenterY
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.view
+                                                          attribute:NSLayoutAttributeCenterY
+                                                         multiplier:1
+                                                           constant:40]];
+
+    
     self.view.backgroundColor = [UIColor redColor];
     
     self.title = @"Second";
@@ -57,6 +83,13 @@
 {
 //    NSLog(@"firstButtonPressed");
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void) thirdButtonPressed
+{
+    NSLog(@"thirdButtonPressed");
+    DWThirdViewController *dwThirdViewController = [[DWThirdViewController alloc] init];
+    [self.navigationController pushViewController:dwThirdViewController animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
