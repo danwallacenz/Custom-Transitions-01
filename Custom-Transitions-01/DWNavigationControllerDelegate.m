@@ -18,6 +18,7 @@
 
 @property (strong, nonatomic) UINavigationController *navigationController;
 @property (strong, nonatomic) UIPercentDrivenInteractiveTransition *interactionController;
+@property (strong, nonatomic) UIPanGestureRecognizer* panRecognizer;
 
 @end
 
@@ -32,8 +33,8 @@
         
         self.navigationController = navigationController;
         
-        UIPanGestureRecognizer* panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
-        [self.navigationController.view addGestureRecognizer:panRecognizer];
+        self.panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
+        [self.navigationController.view addGestureRecognizer:self.panRecognizer];
         
     }
     return self;
@@ -61,19 +62,25 @@
 -(void)pan:(UIPanGestureRecognizer*)recognizer
 {
     UIView *view = self.navigationController.topViewController.view;
+    NSLog(@"Top view controller is %@", [self.navigationController.topViewController class]);
+//    UIView *view = recognizer.view;
     
     if (recognizer.state == UIGestureRecognizerStateBegan) {
+        
         NSLog(@"\n");
         NSLog(@"UIGestureRecognizerStateBegan");
         NSLog(@"self.navigationController.viewControllers.count = %d", self.navigationController.viewControllers.count);
         NSLog(@"topViewController = %@",[self.navigationController.topViewController class]);
         
+        BOOL panMovingRight = [recognizer velocityInView:view].x < 0;
+//        BOOL panMovingLeft = [recognizer velocityInView:view].x > 0;
+        NSLog(@"Moving %@", panMovingRight?@"right":@"left");
+        
+        
         CGPoint location = [recognizer locationInView:view];
         BOOL panBeganInLeftSide = location.x <= CGRectGetMidX(view.bounds);
         BOOL panBeganInRightSide = !panBeganInLeftSide;
         
-        
-//        if (panBeganInLeftSide && self.navigationController.viewControllers.count >= 2) { // left half
         if (panBeganInLeftSide) { // left half
             if([self.navigationController.topViewController isKindOfClass:[DWSecondViewController class]]
                || [self.navigationController.topViewController isKindOfClass:[DWThirdViewController class]]){
@@ -97,8 +104,9 @@
     
         
     } else if (recognizer.state == UIGestureRecognizerStateChanged) {
-//        NSLog(@"UIGestureRecognizerStateChanged");
+
         NSLog(@"Moving %@",[recognizer velocityInView:view].x > 0?@"right": @"left");
+        
         CGPoint translation = [recognizer translationInView:view];
         CGFloat d = fabs(translation.x / CGRectGetWidth(view.bounds));
         [self.interactionController updateInteractiveTransition:d];
@@ -127,25 +135,54 @@
             [self.interactionController cancelInteractiveTransition];
                 NSLog(@"CANCEL INTERACTIVE TRANSITION");
         }
-
-        
-//        if(self.navigationController.viewControllers.count > 1){
-//            //push
-//            if([recognizer velocityInView:view].x < 0  && self.interactionController.percentComplete > .3){
-//                [self.interactionController finishInteractiveTransition];
-//            } else {
-//                [self.interactionController cancelInteractiveTransition];
-//            }
-//        }else{ // pop
-//            
-//            if([recognizer velocityInView:view].x > 0 && self.interactionController.percentComplete > .3){
-//                [self.interactionController finishInteractiveTransition];
-//            } else {
-//                [self.interactionController cancelInteractiveTransition];
-//            }
-//        }
         
         self.interactionController = nil;
+        
+        
+    }else{
+        NSString *recognizerState = @"UNKNOWN";
+        
+        switch (recognizer.state) {
+            case UIGestureRecognizerStatePossible:
+                recognizerState = @"UIGestureRecognizerStatePossible";
+                break;
+            case UIGestureRecognizerStateBegan:
+                recognizerState = @"UIGestureRecognizerStateBegan";
+                break;
+            case UIGestureRecognizerStateChanged:
+                recognizerState = @"UIGestureRecognizerStateChanged";
+                break;
+            case UIGestureRecognizerStateEnded:
+                recognizerState = @"UIGestureRecognizerStateEnded";
+                break;
+            case UIGestureRecognizerStateCancelled:
+                recognizerState = @"UIGestureRecognizerStateCancelled";
+                break;
+            case UIGestureRecognizerStateFailed:
+                recognizerState = @"UIGestureRecognizerStateFailed";
+                break;
+                
+                // WTFF
+//            case UIGestureRecognizerStateRecognized || UIGestureRecognizerStateEnded :
+//                recognizerState = @"UIGestureRecognizerStateRecognized";
+//                break;
+//            case UIGestureRecognizerStateEnded:
+//                recognizerState = @"UIGestureRecognizerStateEnded";
+//                break;
+                
+            default:
+                break;
+        }
+        
+        if(recognizer.state == UIGestureRecognizerStateRecognized){
+            recognizerState = @"UIGestureRecognizerStateRecognized";
+        }
+        if(recognizer.state == UIGestureRecognizerStateEnded){
+            recognizerState = @"UIGestureRecognizerStateEnded";
+        }
+
+        
+        NSLog(@"%@",recognizerState);
     }
 }
 
