@@ -72,8 +72,8 @@
         NSLog(@"self.navigationController.viewControllers.count = %d", self.navigationController.viewControllers.count);
         NSLog(@"topViewController = %@",[self.navigationController.topViewController class]);
         
-        BOOL panMovingRight = [recognizer velocityInView:view].x < 0;
-//        BOOL panMovingLeft = [recognizer velocityInView:view].x > 0;
+        BOOL panMovingRight = [recognizer velocityInView:view].x > 0;
+        BOOL panMovingLeft = [recognizer velocityInView:view].x < 0;
         NSLog(@"Moving %@", panMovingRight?@"right":@"left");
         
         
@@ -81,7 +81,7 @@
         BOOL panBeganInLeftSide = location.x <= CGRectGetMidX(view.bounds);
         BOOL panBeganInRightSide = !panBeganInLeftSide;
         
-        if (panBeganInLeftSide) { // left half
+        if (panBeganInLeftSide && panMovingRight) { // left half
             if([self.navigationController.topViewController isKindOfClass:[DWSecondViewController class]]
                || [self.navigationController.topViewController isKindOfClass:[DWThirdViewController class]]){
                 
@@ -90,7 +90,7 @@
             }
         }
     
-        if (panBeganInRightSide) { // right half
+        if (panBeganInRightSide && panMovingLeft) { // right half
             if([self.navigationController.topViewController isKindOfClass:[DWFirstViewController class]]){
                 
                 self.interactionController = [UIPercentDrivenInteractiveTransition new];
@@ -124,8 +124,8 @@
         NSLog(@"percent complete %f%%", self.interactionController.percentComplete);
         NSLog(@"\n");
         
-        BOOL panEndedMovingRight = [recognizer velocityInView:view].x < 0;
-        BOOL panEndedMovingLeft = [recognizer velocityInView:view].x > 0;
+        BOOL panEndedMovingRight = [recognizer velocityInView:view].x > 0;
+        BOOL panEndedMovingLeft = [recognizer velocityInView:view].x < 0;
         
 
         if(self.interactionController.percentComplete > .3){
