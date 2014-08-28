@@ -112,6 +112,8 @@
         NSLog(@"self.navigationController.viewControllers.count = %d", self.navigationController.viewControllers.count);
         NSLog(@"Pan ended moving %@",[recognizer velocityInView:view].x > 0?@"right == pop": @"left == push");
         NSLog(@"topViewController = %@",[self.navigationController.topViewController class]);
+        
+        NSLog(@"percent complete %f%%", self.interactionController.percentComplete);
         NSLog(@"\n");
         
         BOOL panEndedMovingRight = [recognizer velocityInView:view].x < 0;

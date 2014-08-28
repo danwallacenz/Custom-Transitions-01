@@ -33,16 +33,20 @@
                          toViewController.view.frame = fromViewController.view.frame;
                          fromViewController.view.frame = endFrame;
                          
-                         
                      } completion:^(BOOL finished) {
                          
                          [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
                          
                          if(![transitionContext transitionWasCancelled]){
+                             
                              [fromViewController.view removeFromSuperview];
-                             toViewController.navigationController.title = toViewController.title;
+                             NSLog(@"POP animation completion - %d view controllers present.\n\n", toViewController.navigationController.viewControllers.count);
+                             
+                         }else{
+                             
+                             NSLog(@"POP animation cancelled - %d view controllers present.\n\n", fromViewController.navigationController.viewControllers.count);
                          }
-//                         NSLog(@"POP completion - %d view controllers present\n\n", toViewController.navigationController.viewControllers.count);
+                         
                      }];
 }
 

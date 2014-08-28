@@ -39,11 +39,17 @@
                          
                          [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
                          
-                         if(![transitionContext transitionWasCancelled]){
+                         // Cancelled
+                         if([transitionContext transitionWasCancelled]){
+                             
+                             NSLog(@"PUSH animation cancelled - %d view controllers present.\n\n", fromViewController.navigationController.viewControllers.count);
+                         
+                        // Success
+                         }else{
                              [fromViewController.view removeFromSuperview];
-                             toViewController.navigationController.title = toViewController.title;
+                             NSLog(@"PUSH animation completion - %d view controllers present.\n\n", toViewController.navigationController.viewControllers.count);
+                             
                          }
-//                          NSLog(@"PUSH completion - %d view controllers present\n\n", toViewController.navigationController.viewControllers.count);
                      }];
 }
 
