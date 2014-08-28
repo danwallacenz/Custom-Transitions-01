@@ -32,6 +32,7 @@
                          
                          toViewController.view.frame = fromViewController.view.frame;
                          fromViewController.view.frame = endFrame;
+                         NSLog(@"ANIMATING - POP. Interactive gesture recognizer takes over from here.");
                          
                      } completion:^(BOOL finished) {
                          

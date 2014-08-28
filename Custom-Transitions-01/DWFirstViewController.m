@@ -52,10 +52,10 @@
     [self.navigationController pushViewController:second animated:NO];
 }
 
-//-(void)viewDidAppear:(BOOL)animated
-//{
-//    NSLog(@"111111 viewDidAppear: %@",[[self class] description]);
-//}
+-(void)viewDidAppear:(BOOL)animated
+{
+    NSLog(@"111111 viewDidAppear: %@",[[self class] description]);
+}
 
 -(void) secondButtonPressed
 {
