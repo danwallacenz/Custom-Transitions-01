@@ -43,10 +43,16 @@
 
 - (void)animationEnded:(BOOL)transitionCompleted
 {
+    // Restore the ability of the user to interact with the app via touches.
+    BOOL isIgnoringInteractionEvents = [[UIApplication sharedApplication] isIgnoringInteractionEvents];
+    NSLog(@"Ignoring events:%@", isIgnoringInteractionEvents?@"YES":@"NO");
+    [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+    NSLog(@"Ignoring events:%@", isIgnoringInteractionEvents?@"YES":@"NO");
+    
     if(transitionCompleted){
-//        NSLog(@"animationEnded Completed ");
+        NSLog(@"animationEnded Completed ");
     }else{
-//         NSLog(@"animationEnded NOT Completed ");
+         NSLog(@"animationEnded NOT Completed ");
     }
 }
 

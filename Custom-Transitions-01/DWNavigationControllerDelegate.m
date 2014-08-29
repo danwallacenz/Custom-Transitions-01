@@ -62,7 +62,7 @@
 -(void)pan:(UIPanGestureRecognizer*)recognizer
 {
     UIView *view = self.navigationController.topViewController.view;
-    NSLog(@"Top view controller is %@", [self.navigationController.topViewController class]);
+    NSLog(@"Entering pan: The top view controller is %@", [self.navigationController.topViewController class]);
 //    UIView *view = recognizer.view;
     
     if (recognizer.state == UIGestureRecognizerStateBegan) {
@@ -105,13 +105,11 @@
         
     } else if (recognizer.state == UIGestureRecognizerStateChanged) {
 
-        NSLog(@"Moving %@",[recognizer velocityInView:view].x > 0?@"right": @"left");
+//        NSLog(@"Moving %@",[recognizer velocityInView:view].x > 0?@"right": @"left");
         
         CGPoint translation = [recognizer translationInView:view];
         CGFloat d = fabs(translation.x / CGRectGetWidth(view.bounds));
         [self.interactionController updateInteractiveTransition:d];
-        
-        
         
     } else if (recognizer.state == UIGestureRecognizerStateEnded) {
         
@@ -130,7 +128,11 @@
 
         if(self.interactionController.percentComplete > .3){
             [self.interactionController finishInteractiveTransition];
-            NSLog(@"FINISH INTERACTIVE TRANSITION");
+            
+            [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+            
+            BOOL isIgnoringInteractionEvents = [[UIApplication sharedApplication] isIgnoringInteractionEvents];
+            NSLog(@"FINISH INTERACTIVE TRANSITION Ignoring user interaction %@", isIgnoringInteractionEvents?@"yes":@"no");
         } else {
             [self.interactionController cancelInteractiveTransition];
                 NSLog(@"CANCEL INTERACTIVE TRANSITION");
@@ -138,7 +140,14 @@
         
         self.interactionController = nil;
         
+        // Let the animation complete uninterrupted.
         
+        
+        
+    } else if (recognizer.state == UIGestureRecognizerStateCancelled) {
+        
+        NSLog(@"UIGestureRecognizerStateCancelled");
+    
     }else{
         NSString *recognizerState = @"UNKNOWN";
         
