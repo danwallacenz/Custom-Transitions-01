@@ -62,19 +62,19 @@
 -(void)pan:(UIPanGestureRecognizer*)recognizer
 {
     UIView *view = self.navigationController.topViewController.view;
-    NSLog(@"Entering pan: The top view controller is %@", [self.navigationController.topViewController class]);
+//    NSLog(@"Entering pan: The top view controller is %@", [self.navigationController.topViewController class]);
 //    UIView *view = recognizer.view;
     
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         
-        NSLog(@"\n");
-        NSLog(@"UIGestureRecognizerStateBegan");
-        NSLog(@"self.navigationController.viewControllers.count = %d", self.navigationController.viewControllers.count);
-        NSLog(@"topViewController = %@",[self.navigationController.topViewController class]);
+//        NSLog(@"\n");
+//        NSLog(@"UIGestureRecognizerStateBegan");
+//        NSLog(@"self.navigationController.viewControllers.count = %d", self.navigationController.viewControllers.count);
+//        NSLog(@"topViewController = %@",[self.navigationController.topViewController class]);
         
         BOOL panMovingRight = [recognizer velocityInView:view].x > 0;
         BOOL panMovingLeft = [recognizer velocityInView:view].x < 0;
-        NSLog(@"Moving %@", panMovingRight?@"right":@"left");
+//        NSLog(@"Moving %@", panMovingRight?@"right":@"left");
         
         
         CGPoint location = [recognizer locationInView:view];
@@ -114,16 +114,16 @@
     } else if (recognizer.state == UIGestureRecognizerStateEnded) {
         
         
-        NSLog(@"UIGestureRecognizerStateEnded");
-        NSLog(@"self.navigationController.viewControllers.count = %d", self.navigationController.viewControllers.count);
-        NSLog(@"Pan ended moving %@",[recognizer velocityInView:view].x > 0?@"right == pop": @"left == push");
-        NSLog(@"topViewController = %@",[self.navigationController.topViewController class]);
+//        NSLog(@"UIGestureRecognizerStateEnded");
+//        NSLog(@"self.navigationController.viewControllers.count = %d", self.navigationController.viewControllers.count);
+//        NSLog(@"Pan ended moving %@",[recognizer velocityInView:view].x > 0?@"right == pop": @"left == push");
+//        NSLog(@"topViewController = %@",[self.navigationController.topViewController class]);
+//        
+//        NSLog(@"percent complete %f%%", self.interactionController.percentComplete);
+//        NSLog(@"\n");
         
-        NSLog(@"percent complete %f%%", self.interactionController.percentComplete);
-        NSLog(@"\n");
-        
-        BOOL panEndedMovingRight = [recognizer velocityInView:view].x > 0;
-        BOOL panEndedMovingLeft = [recognizer velocityInView:view].x < 0;
+//        BOOL panEndedMovingRight = [recognizer velocityInView:view].x > 0;
+//        BOOL panEndedMovingLeft = [recognizer velocityInView:view].x < 0;
         
 
         if(self.interactionController.percentComplete > .3){
@@ -132,10 +132,10 @@
             [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
             
             BOOL isIgnoringInteractionEvents = [[UIApplication sharedApplication] isIgnoringInteractionEvents];
-            NSLog(@"FINISH INTERACTIVE TRANSITION Ignoring user interaction %@", isIgnoringInteractionEvents?@"yes":@"no");
+//            NSLog(@"FINISH INTERACTIVE TRANSITION Ignoring user interaction %@", isIgnoringInteractionEvents?@"yes":@"no");
         } else {
             [self.interactionController cancelInteractiveTransition];
-                NSLog(@"CANCEL INTERACTIVE TRANSITION");
+//                NSLog(@"CANCEL INTERACTIVE TRANSITION");
         }
         
         self.interactionController = nil;
@@ -146,7 +146,7 @@
         
     } else if (recognizer.state == UIGestureRecognizerStateCancelled) {
         
-        NSLog(@"UIGestureRecognizerStateCancelled");
+//        NSLog(@"UIGestureRecognizerStateCancelled");
     
     }else{
         NSString *recognizerState = @"UNKNOWN";
@@ -191,7 +191,7 @@
         }
 
         
-        NSLog(@"%@",recognizerState);
+//        NSLog(@"%@",recognizerState);
     }
 }
 

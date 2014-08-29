@@ -49,10 +49,10 @@
     self.title = @"Third";
 }
 
--(void)viewDidAppear:(BOOL)animated
-{
-    NSLog(@"333333 viewDidAppear: %@",[[self class] description]);
-}
+//-(void)viewDidAppear:(BOOL)animated
+//{
+//    NSLog(@"333333 viewDidAppear: %@",[[self class] description]);
+//}
 
 -(void) secondBtnPressed
 {

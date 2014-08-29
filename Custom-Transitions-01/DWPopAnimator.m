@@ -32,7 +32,7 @@
                          
                          toViewController.view.frame = fromViewController.view.frame;
                          fromViewController.view.frame = endFrame;
-                         NSLog(@"ANIMATING - POP. Interactive gesture recognizer takes over from here.");
+//                         NSLog(@"ANIMATING - POP. Interactive gesture recognizer takes over from here.");
                          
                      } completion:^(BOOL finished) {
                          
@@ -41,11 +41,11 @@
                          if(![transitionContext transitionWasCancelled]){
                              
                              [fromViewController.view removeFromSuperview];
-                             NSLog(@"POP animation completion - %d view controllers present.\n\n", toViewController.navigationController.viewControllers.count);
+//                             NSLog(@"POP animation completion - %d view controllers present.\n\n", toViewController.navigationController.viewControllers.count);
                              
                          }else{
                              
-                             NSLog(@"POP animation cancelled - %d view controllers present.\n\n", fromViewController.navigationController.viewControllers.count);
+//                             NSLog(@"POP animation cancelled - %d view controllers present.\n\n", fromViewController.navigationController.viewControllers.count);
                          }
                          
                      }];
