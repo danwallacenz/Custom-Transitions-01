@@ -28,6 +28,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
+    [self setPreferences];
+    
     UIViewController *first = [[DWFirstViewController alloc] init];
     UINavigationController *navController=[[UINavigationController alloc] initWithRootViewController: first];
     
@@ -40,8 +42,21 @@
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    
+
     return YES;
 }
+
+-(void) setPreferences
+{
+    // Register the preference defaults early.
+    NSDictionary *appDefaults = [NSDictionary
+                                 dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:@"show_nav_bars"];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
+    
+    BOOL showNavBars = [[NSUserDefaults standardUserDefaults] boolForKey:@"show_nav_bars"];
+    NSLog(@"showNavBars = %@", showNavBars?@"YES":@"NO");
+    NSLog(@" ");
+}
+
 
 @end

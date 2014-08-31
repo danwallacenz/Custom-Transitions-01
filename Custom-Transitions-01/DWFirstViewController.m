@@ -52,10 +52,13 @@
     [self.navigationController pushViewController:second animated:NO];
 }
 
-//-(void)viewDidAppear:(BOOL)animated
-//{
-//    NSLog(@"111111 viewDidAppear: %@",[[self class] description]);
-//}
+-(void)viewDidAppear:(BOOL)animated
+{
+    NSLog(@"111111 viewDidAppear: %@",[[self class] description]);
+    
+    BOOL showNavBars = [[NSUserDefaults standardUserDefaults] boolForKey:@"show_nav_bars"];
+    NSLog(@"showNavBars = %@", showNavBars?@"YES": @"NO");
+}
 
 -(void) secondButtonPressed
 {
