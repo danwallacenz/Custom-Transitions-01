@@ -23,6 +23,7 @@
 		E05B78A919A5506C001F7B7D /* DWFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E05B78A819A5506C001F7B7D /* DWFirstViewController.m */; };
 		E05B78AC19A5507C001F7B7D /* DWSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E05B78AB19A5507C001F7B7D /* DWSecondViewController.m */; };
 		E05B78AF19A561C2001F7B7D /* DWAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = E05B78AE19A561C2001F7B7D /* DWAnimator.m */; };
+		E05D626B19B3E75400C8F225 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E05D626A19B3E75400C8F225 /* Settings.bundle */; };
 		E05F6BB419AD673900E44305 /* DWThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E05F6BB319AD673900E44305 /* DWThirdViewController.m */; };
 		E065ED4B19A6A3B60020F408 /* DWNavigationControllerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E065ED4A19A6A3B60020F408 /* DWNavigationControllerDelegate.m */; };
 		E065ED4E19A6B73D0020F408 /* DWPushAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = E065ED4D19A6B73D0020F408 /* DWPushAnimator.m */; };
@@ -64,6 +65,7 @@
 		E05B78AB19A5507C001F7B7D /* DWSecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWSecondViewController.m; sourceTree = "<group>"; };
 		E05B78AD19A561C2001F7B7D /* DWAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWAnimator.h; sourceTree = "<group>"; };
 		E05B78AE19A561C2001F7B7D /* DWAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWAnimator.m; sourceTree = "<group>"; };
+		E05D626A19B3E75400C8F225 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		E05F6BB219AD673900E44305 /* DWThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWThirdViewController.h; sourceTree = "<group>"; };
 		E05F6BB319AD673900E44305 /* DWThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWThirdViewController.m; sourceTree = "<group>"; };
 		E065ED4919A6A3B60020F408 /* DWNavigationControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNavigationControllerDelegate.h; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 		E05B786C19A54E55001F7B7D = {
 			isa = PBXGroup;
 			children = (
+				E05D626A19B3E75400C8F225 /* Settings.bundle */,
 				E05B787E19A54E55001F7B7D /* Custom-Transitions-01 */,
 				E05B789719A54E55001F7B7D /* Custom-Transitions-01Tests */,
 				E05B787719A54E55001F7B7D /* Frameworks */,
@@ -277,6 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E05B788319A54E55001F7B7D /* InfoPlist.strings in Resources */,
+				E05D626B19B3E75400C8F225 /* Settings.bundle in Resources */,
 				E05B788B19A54E55001F7B7D /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
