@@ -131,7 +131,7 @@
             
             [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
             
-            BOOL isIgnoringInteractionEvents = [[UIApplication sharedApplication] isIgnoringInteractionEvents];
+//            BOOL isIgnoringInteractionEvents = [[UIApplication sharedApplication] isIgnoringInteractionEvents];
 //            NSLog(@"FINISH INTERACTIVE TRANSITION Ignoring user interaction %@", isIgnoringInteractionEvents?@"yes":@"no");
         } else {
             [self.interactionController cancelInteractiveTransition];

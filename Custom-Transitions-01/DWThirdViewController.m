@@ -44,7 +44,7 @@
                                                          multiplier:1
                                                            constant:0]];
     
-    self.view.backgroundColor = [UIColor orangeColor];
+    self.view.backgroundColor = [UIColor greenColor];
     
     self.title = @"Third";
 }
