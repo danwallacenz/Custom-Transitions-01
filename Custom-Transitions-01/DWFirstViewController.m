@@ -58,6 +58,7 @@
     
     BOOL showNavBars = [[NSUserDefaults standardUserDefaults] boolForKey:@"show_nav_bars"];
     NSLog(@"showNavBars = %@", showNavBars?@"YES": @"NO");
+    [self.navigationController setNavigationBarHidden:!showNavBars animated:YES];
 }
 
 -(void) secondButtonPressed

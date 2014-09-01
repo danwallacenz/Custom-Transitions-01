@@ -36,6 +36,12 @@
         self.panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
         [self.navigationController.view addGestureRecognizer:self.panRecognizer];
         
+        // NSUserDefaultsDidChangeNotification
+        [[NSNotificationCenter defaultCenter] addObserverForName: NSUserDefaultsDidChangeNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
+            BOOL showNavBars = [[NSUserDefaults standardUserDefaults] boolForKey:@"show_nav_bars"];
+            [self.navigationController setNavigationBarHidden:!showNavBars animated:YES];
+        }];
+        
     }
     return self;
 }
