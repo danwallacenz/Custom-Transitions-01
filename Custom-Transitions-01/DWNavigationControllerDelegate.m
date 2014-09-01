@@ -60,34 +60,32 @@
     if (operation == UINavigationControllerOperationPop) {
         return [[DWPopAnimator alloc] init];
     }
-    return nil;
     
+    return nil;
 }
 
 
 -(void)pan:(UIPanGestureRecognizer*)recognizer
 {
     UIView *view = self.navigationController.topViewController.view;
-//    NSLog(@"Entering pan: The top view controller is %@", [self.navigationController.topViewController class]);
-//    UIView *view = recognizer.view;
+    
+    
+    // Began.
     
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         
-//        NSLog(@"\n");
-//        NSLog(@"UIGestureRecognizerStateBegan");
-//        NSLog(@"self.navigationController.viewControllers.count = %d", self.navigationController.viewControllers.count);
-//        NSLog(@"topViewController = %@",[self.navigationController.topViewController class]);
-        
         BOOL panMovingRight = [recognizer velocityInView:view].x > 0;
         BOOL panMovingLeft = [recognizer velocityInView:view].x < 0;
-//        NSLog(@"Moving %@", panMovingRight?@"right":@"left");
-        
         
         CGPoint location = [recognizer locationInView:view];
         BOOL panBeganInLeftSide = location.x <= CGRectGetMidX(view.bounds);
         BOOL panBeganInRightSide = !panBeganInLeftSide;
         
+        
+        // Pops.
         if (panBeganInLeftSide && panMovingRight) { // left half
+            
+            // Pop to previous VC.
             if([self.navigationController.topViewController isKindOfClass:[DWSecondViewController class]]
                || [self.navigationController.topViewController isKindOfClass:[DWThirdViewController class]]){
                 
@@ -96,11 +94,16 @@
             }
         }
     
+        // Pushes.
         if (panBeganInRightSide && panMovingLeft) { // right half
+            
+            // Push Second VC.
             if([self.navigationController.topViewController isKindOfClass:[DWFirstViewController class]]){
                 
                 self.interactionController = [UIPercentDrivenInteractiveTransition new];
                 [self.navigationController pushViewController: [[DWSecondViewController alloc] init] animated:YES];
+            
+            // Push Third VC.
             }else if([self.navigationController.topViewController isKindOfClass:[DWSecondViewController class]]){
                 
                 self.interactionController = [UIPercentDrivenInteractiveTransition new];
@@ -109,51 +112,38 @@
         }
     
         
+    // Changed.
+        
     } else if (recognizer.state == UIGestureRecognizerStateChanged) {
-
-//        NSLog(@"Moving %@",[recognizer velocityInView:view].x > 0?@"right": @"left");
         
         CGPoint translation = [recognizer translationInView:view];
         CGFloat d = fabs(translation.x / CGRectGetWidth(view.bounds));
         [self.interactionController updateInteractiveTransition:d];
         
+    
+    // Ended.
+        
     } else if (recognizer.state == UIGestureRecognizerStateEnded) {
         
-        
-//        NSLog(@"UIGestureRecognizerStateEnded");
-//        NSLog(@"self.navigationController.viewControllers.count = %d", self.navigationController.viewControllers.count);
-//        NSLog(@"Pan ended moving %@",[recognizer velocityInView:view].x > 0?@"right == pop": @"left == push");
-//        NSLog(@"topViewController = %@",[self.navigationController.topViewController class]);
-//        
-//        NSLog(@"percent complete %f%%", self.interactionController.percentComplete);
-//        NSLog(@"\n");
-        
-//        BOOL panEndedMovingRight = [recognizer velocityInView:view].x > 0;
-//        BOOL panEndedMovingLeft = [recognizer velocityInView:view].x < 0;
-        
-
         if(self.interactionController.percentComplete > .3){
             [self.interactionController finishInteractiveTransition];
             
             [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-            
-//            BOOL isIgnoringInteractionEvents = [[UIApplication sharedApplication] isIgnoringInteractionEvents];
-//            NSLog(@"FINISH INTERACTIVE TRANSITION Ignoring user interaction %@", isIgnoringInteractionEvents?@"yes":@"no");
+
         } else {
             [self.interactionController cancelInteractiveTransition];
-//                NSLog(@"CANCEL INTERACTIVE TRANSITION");
         }
         
         self.interactionController = nil;
         
-        // Let the animation complete uninterrupted.
         
-        
+    // Cancelled.
         
     } else if (recognizer.state == UIGestureRecognizerStateCancelled) {
         
-//        NSLog(@"UIGestureRecognizerStateCancelled");
-    
+     
+    // Other states.
+        
     }else{
         NSString *recognizerState = @"UNKNOWN";
         
@@ -176,28 +166,18 @@
             case UIGestureRecognizerStateFailed:
                 recognizerState = @"UIGestureRecognizerStateFailed";
                 break;
-                
-                // WTFF
-//            case UIGestureRecognizerStateRecognized || UIGestureRecognizerStateEnded :
-//                recognizerState = @"UIGestureRecognizerStateRecognized";
-//                break;
-//            case UIGestureRecognizerStateEnded:
-//                recognizerState = @"UIGestureRecognizerStateEnded";
-//                break;
-                
+
             default:
                 break;
         }
         
+        // WTFF
         if(recognizer.state == UIGestureRecognizerStateRecognized){
             recognizerState = @"UIGestureRecognizerStateRecognized";
         }
         if(recognizer.state == UIGestureRecognizerStateEnded){
             recognizerState = @"UIGestureRecognizerStateEnded";
         }
-
-        
-//        NSLog(@"%@",recognizerState);
     }
 }
 

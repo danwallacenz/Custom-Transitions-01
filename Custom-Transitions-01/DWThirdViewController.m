@@ -49,14 +49,8 @@
     self.title = @"Third";
 }
 
-//-(void)viewDidAppear:(BOOL)animated
-//{
-//    NSLog(@"333333 viewDidAppear: %@",[[self class] description]);
-//}
-
 -(void) secondBtnPressed
 {
-    //    NSLog(@"secondBtnPressed");
     [self.navigationController popViewControllerAnimated:YES];
 }
 

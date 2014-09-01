@@ -53,9 +53,7 @@
                                  dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:@"show_nav_bars"];
     [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
     
-    BOOL showNavBars = [[NSUserDefaults standardUserDefaults] boolForKey:@"show_nav_bars"];
-    NSLog(@"showNavBars = %@", showNavBars?@"YES":@"NO");
-    NSLog(@" ");
+//    BOOL showNavBars = [[NSUserDefaults standardUserDefaults] boolForKey:@"show_nav_bars"];
 }
 
 

@@ -48,22 +48,14 @@
     
     self.title = @"First";
     
+    // Initially show the second VC.
     UIViewController *second = [[DWSecondViewController alloc] init];
     [self.navigationController pushViewController:second animated:NO];
 }
 
--(void)viewDidAppear:(BOOL)animated
-{
-    NSLog(@"111111 viewDidAppear: %@",[[self class] description]);
-    
-    BOOL showNavBars = [[NSUserDefaults standardUserDefaults] boolForKey:@"show_nav_bars"];
-    NSLog(@"showNavBars = %@", showNavBars?@"YES": @"NO");
-    [self.navigationController setNavigationBarHidden:!showNavBars animated:YES];
-}
 
 -(void) secondButtonPressed
 {
-//    NSLog(@"secondButtonPressed");
     UIViewController *second = [[DWSecondViewController alloc] init];
     [self.navigationController pushViewController:second animated:YES];
     

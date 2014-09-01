@@ -74,20 +74,13 @@
     self.title = @"Second";
 }
 
-//-(void)viewDidAppear:(BOOL)animated
-//{
-//    NSLog(@"222222 viewDidAppear: %@",[[self class] description]);
-//}
-
 -(void) firstButtonPressed
 {
-//    NSLog(@"firstButtonPressed");
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void) thirdButtonPressed
 {
-    NSLog(@"thirdButtonPressed");
     DWThirdViewController *dwThirdViewController = [[DWThirdViewController alloc] init];
     [self.navigationController pushViewController:dwThirdViewController animated:YES];
 }

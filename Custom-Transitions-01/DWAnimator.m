@@ -17,7 +17,7 @@
 }
 
 /**
- To be overridden by subclasses.
+ To be overridden by subclasses. Default animation - fade in.
  */
 - (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext
 {
@@ -44,7 +44,9 @@
 - (void)animationEnded:(BOOL)transitionCompleted
 {
     // Restore the ability of the user to interact with the app via touches.
-    [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+    if([[UIApplication sharedApplication] isIgnoringInteractionEvents]){
+        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+    }
     
     if(transitionCompleted){
 //        NSLog(@"animationEnded Completed ");
