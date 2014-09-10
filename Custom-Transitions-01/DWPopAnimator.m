@@ -17,6 +17,31 @@
     
     [[transitionContext containerView] addSubview:toViewController.view];
 
+    
+    NSDictionary *bindings = @{@"fromView":fromViewController.view, @"toView":toViewController.view};
+    
+    // From VC Constraints
+    fromViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
+    NSArray *fromViewHorizontalConstraints
+        = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[fromView]-|"
+                                                  options:0
+                                                  metrics:nil
+                                                    views:bindings];
+    [fromViewController.view.superview addConstraints:fromViewHorizontalConstraints];
+    
+    NSArray *fromViewVerticalConstraints
+        = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[fromView]-|"
+                                              options:0
+                                              metrics:nil
+                                                views:bindings];
+     [fromViewController.view.superview addConstraints:fromViewVerticalConstraints];
+    
+    
+    // To VC Constraints
+    
+    
+    
+    
     toViewController.view.frame =  CGRectMake(-fromViewController.view.bounds.size.width, 0,
                                               fromViewController.view.bounds.size.width,
                                               fromViewController.view.bounds.size.height);
