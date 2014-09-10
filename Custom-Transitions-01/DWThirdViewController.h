@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DWXXViewController.h"
 
-@interface DWThirdViewController : UIViewController
+@interface DWThirdViewController : DWXXViewController
 
 @end

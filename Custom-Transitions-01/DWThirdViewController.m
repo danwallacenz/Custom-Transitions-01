@@ -23,7 +23,7 @@
     UIButton *secondBtn = [UIButton  buttonWithType:UIButtonTypeContactAdd];
     [secondBtn addTarget:self  action:@selector(secondBtnPressed)
         forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:secondBtn];
+    [self.colorView addSubview:secondBtn];
     
     [secondBtn setTranslatesAutoresizingMaskIntoConstraints:NO];
     
@@ -44,7 +44,9 @@
                                                          multiplier:1
                                                            constant:0]];
     
-    self.view.backgroundColor = [UIColor greenColor];
+    self.colorView.backgroundColor = [UIColor greenColor];
+//    [self.colorView setBackgroundColor: [[UIColor lightGrayColor] colorWithAlphaComponent:0.2]];
+    
     
     self.title = @"Third";
 }

@@ -18,28 +18,48 @@
     [[transitionContext containerView] addSubview:toViewController.view];
 
     
-    NSDictionary *bindings = @{@"fromView":fromViewController.view, @"toView":toViewController.view};
+//    NSDictionary *bindings = @{@"fromView":fromViewController.view, @"toView":toViewController.view};
     
-    // From VC Constraints
-    fromViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
-    NSArray *fromViewHorizontalConstraints
-        = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[fromView]-|"
-                                                  options:0
-                                                  metrics:nil
-                                                    views:bindings];
-    [fromViewController.view.superview addConstraints:fromViewHorizontalConstraints];
+//    // From VC Constraints
+//    fromViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
+//    
+//    // Stretch horizontally - temporary insets.
+//    NSArray *fromViewHorizontalConstraints
+//        = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[fromView]-|"
+//                                                  options:0
+//                                                  metrics:nil
+//                                                    views:bindings];
+//    [fromViewController.view.superview addConstraints:fromViewHorizontalConstraints];
+//    
+//    // Stretch vertically - temporary insets.
+//    NSArray *fromViewVerticalConstraints
+//        = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[fromView]-|"
+//                                              options:0
+//                                              metrics:nil
+//                                                views:bindings];
+//     [fromViewController.view.superview addConstraints:fromViewVerticalConstraints];
+//    
+//    
+//    // To VC Constraints
+//    // width
+//    toViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
+//    NSArray *toViewWidthConstraints
+//    = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[toView(==fromView)]"
+//                                              options:0
+//                                              metrics:nil
+//                                                views:bindings];
+//    [toViewController.view.superview addConstraints:toViewWidthConstraints];
+//    
+//    // Height
+//    NSArray *toViewHeightConstraints
+//    = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[toView(==fromView)]"
+//                                              options:0
+//                                              metrics:nil
+//                                                views:bindings];
+//    [toViewController.view.superview addConstraints:toViewHeightConstraints];
     
-    NSArray *fromViewVerticalConstraints
-        = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[fromView]-|"
-                                              options:0
-                                              metrics:nil
-                                                views:bindings];
-     [fromViewController.view.superview addConstraints:fromViewVerticalConstraints];
-    
-    
-    // To VC Constraints
-    
-    
+    // Initially position to ViewController to the left.
+//    NSLayoutConstraint *toViewControllerInitialConstraint;
     
     
     toViewController.view.frame =  CGRectMake(-fromViewController.view.bounds.size.width, 0,

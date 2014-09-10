@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E05131D019C100230096CE92 /* DWXXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E05131CF19C100230096CE92 /* DWXXViewController.m */; };
 		E05B787919A54E55001F7B7D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E05B787819A54E55001F7B7D /* Foundation.framework */; };
 		E05B787B19A54E55001F7B7D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E05B787A19A54E55001F7B7D /* CoreGraphics.framework */; };
 		E05B787D19A54E55001F7B7D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E05B787C19A54E55001F7B7D /* UIKit.framework */; };
@@ -40,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E05131CE19C100230096CE92 /* DWXXViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWXXViewController.h; path = ../DWXXViewController.h; sourceTree = "<group>"; };
+		E05131CF19C100230096CE92 /* DWXXViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWXXViewController.m; path = ../DWXXViewController.m; sourceTree = "<group>"; };
 		E05B787519A54E55001F7B7D /* Custom-Transitions-01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Custom-Transitions-01.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E05B787819A54E55001F7B7D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E05B787A19A54E55001F7B7D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -113,6 +116,8 @@
 		E0558B7419ABDCF5003499D1 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E05131CE19C100230096CE92 /* DWXXViewController.h */,
+				E05131CF19C100230096CE92 /* DWXXViewController.m */,
 				E05B78A719A5506C001F7B7D /* DWFirstViewController.h */,
 				E05B78A819A5506C001F7B7D /* DWFirstViewController.m */,
 				E05B78AA19A5507C001F7B7D /* DWSecondViewController.h */,
@@ -298,6 +303,7 @@
 				E05B788519A54E55001F7B7D /* main.m in Sources */,
 				E05B78AC19A5507C001F7B7D /* DWSecondViewController.m in Sources */,
 				E065ED4B19A6A3B60020F408 /* DWNavigationControllerDelegate.m in Sources */,
+				E05131D019C100230096CE92 /* DWXXViewController.m in Sources */,
 				E065ED4E19A6B73D0020F408 /* DWPushAnimator.m in Sources */,
 				E05B78A919A5506C001F7B7D /* DWFirstViewController.m in Sources */,
 				E05F6BB419AD673900E44305 /* DWThirdViewController.m in Sources */,

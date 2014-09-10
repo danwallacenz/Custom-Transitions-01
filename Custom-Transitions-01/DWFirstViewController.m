@@ -22,9 +22,32 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+//    // Positioning Constraints
+//    self.view.translatesAutoresizingMaskIntoConstraints = NO;
+//    
+//    NSDictionary *bindings = @{@"view":self.view};
+//    
+//    // Stretch horizontally - temporary insets.
+//    NSArray *fromViewHorizontalConstraints
+//    = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]-|"
+//                                              options:0
+//                                              metrics:nil
+//                                                views:bindings];
+//    [self.view.superview addConstraints:fromViewHorizontalConstraints];
+//    
+//    // Stretch vertically - temporary insets.
+//    NSArray *fromViewVerticalConstraints
+//    = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[view]-|"
+//                                              options:0
+//                                              metrics:nil
+//                                                views:bindings];
+//    [self.view.superview addConstraints:fromViewVerticalConstraints];
+    
+    
+    // Add a button.
     UIButton *secondBtn = [UIButton buttonWithType:UIButtonTypeContactAdd];
     [secondBtn addTarget:self  action:@selector(secondButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:secondBtn];
+    [self.colorView addSubview:secondBtn];
 
     [secondBtn setTranslatesAutoresizingMaskIntoConstraints:NO];
     
@@ -44,7 +67,10 @@
                                                           attribute:NSLayoutAttributeCenterY
                                                           multiplier:1
                                                            constant:0]];
-    self.view.backgroundColor = [UIColor orangeColor];
+    self.colorView.backgroundColor = [UIColor orangeColor];
+
+//    [self.colorView setBackgroundColor: [[UIColor lightGrayColor] colorWithAlphaComponent:0.2]];
+
     
     self.title = @"First";
     
@@ -60,6 +86,7 @@
     [self.navigationController pushViewController:second animated:YES];
     
 }
+
 
 - (void)didReceiveMemoryWarning
 {
