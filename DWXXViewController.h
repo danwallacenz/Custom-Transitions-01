@@ -10,6 +10,6 @@
 
 @interface DWXXViewController : UIViewController
 
-@property (strong, nonatomic) UIView *colorView;
+@property (strong, nonatomic) UIView *backgroundView;
 
 @end

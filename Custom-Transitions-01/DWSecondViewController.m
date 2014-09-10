@@ -23,7 +23,7 @@
     
     UIButton *firstBtn = [UIButton  buttonWithType:UIButtonTypeContactAdd];
     [firstBtn addTarget:self  action:@selector(firstButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-    [self.colorView addSubview:firstBtn];
+    [self.backgroundView addSubview:firstBtn];
     
     [firstBtn setTranslatesAutoresizingMaskIntoConstraints:NO];
     
@@ -47,7 +47,7 @@
     
     UIButton *thirdBtn = [UIButton  buttonWithType:UIButtonTypeContactAdd];
     [thirdBtn addTarget:self  action:@selector(thirdButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-    [self.colorView addSubview:thirdBtn];
+    [self.backgroundView addSubview:thirdBtn];
     
     [thirdBtn setTranslatesAutoresizingMaskIntoConstraints:NO];
     
@@ -69,7 +69,7 @@
                                                            constant:40]];
 
     
-    self.colorView.backgroundColor = [UIColor redColor];
+    self.backgroundView.backgroundColor = [UIColor redColor];
 //    [self.colorView setBackgroundColor: [[UIColor lightGrayColor] colorWithAlphaComponent:0.2]];
     
     self.title = @"Second";

@@ -23,7 +23,7 @@
     UIButton *secondBtn = [UIButton  buttonWithType:UIButtonTypeContactAdd];
     [secondBtn addTarget:self  action:@selector(secondBtnPressed)
         forControlEvents:UIControlEventTouchUpInside];
-    [self.colorView addSubview:secondBtn];
+    [self.backgroundView addSubview:secondBtn];
     
     [secondBtn setTranslatesAutoresizingMaskIntoConstraints:NO];
     
@@ -44,7 +44,7 @@
                                                          multiplier:1
                                                            constant:0]];
     
-    self.colorView.backgroundColor = [UIColor greenColor];
+    self.backgroundView.backgroundColor = [UIColor greenColor];
 //    [self.colorView setBackgroundColor: [[UIColor lightGrayColor] colorWithAlphaComponent:0.2]];
     
     

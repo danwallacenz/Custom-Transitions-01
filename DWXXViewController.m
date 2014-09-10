@@ -36,13 +36,13 @@
     
 //        self.constraintsAdded = YES;
 
-    self.colorView = [[UIView alloc]initWithFrame:CGRectZero];
-    [self.view addSubview: self.colorView];
+    self.backgroundView = [[UIView alloc]initWithFrame:CGRectZero];
+    [self.view addSubview: self.backgroundView];
     
     // Positioning Constraints
-    self.colorView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.backgroundView.translatesAutoresizingMaskIntoConstraints = NO;
 //    self.view.translatesAutoresizingMaskIntoConstraints = NO;
-    NSDictionary *bindings = @{@"colorView":self.colorView};
+    NSDictionary *bindings = @{@"colorView":self.backgroundView};
 
     // Stretch horizontally - temporary insets.
     NSArray *colorViewHorizontalConstraints
@@ -60,7 +60,7 @@
                                                 views:bindings];
     [self.view addConstraints:colorViewVerticalConstraints];
     
-    NSLog(@"self.colorView.frame = %@",NSStringFromCGRect(self.colorView.frame));
+    NSLog(@"self.colorView.frame = %@",NSStringFromCGRect(self.backgroundView.frame));
     
 //    [self.colorView setBackgroundColor:[UIColor magentaColor]];
     

@@ -47,7 +47,7 @@
     // Add a button.
     UIButton *secondBtn = [UIButton buttonWithType:UIButtonTypeContactAdd];
     [secondBtn addTarget:self  action:@selector(secondButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-    [self.colorView addSubview:secondBtn];
+    [self.backgroundView addSubview:secondBtn];
 
     [secondBtn setTranslatesAutoresizingMaskIntoConstraints:NO];
     
@@ -67,7 +67,7 @@
                                                           attribute:NSLayoutAttributeCenterY
                                                           multiplier:1
                                                            constant:0]];
-    self.colorView.backgroundColor = [UIColor orangeColor];
+    self.backgroundView.backgroundColor = [UIColor orangeColor];
 
 //    [self.colorView setBackgroundColor: [[UIColor lightGrayColor] colorWithAlphaComponent:0.2]];
 
