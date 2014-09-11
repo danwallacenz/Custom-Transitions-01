@@ -62,12 +62,13 @@
                                      multiplier:1.0
                                        constant:0.0];
     [fromViewController.view addConstraint:fromViewOffsetConstraint];
+    
     [fromViewController.view layoutIfNeeded];
     
     // TODO Make this frame into constraints
-    CGRect endFrame = CGRectMake(fromViewController.view.bounds.size.width, 0,
-                                 fromViewController.view.bounds.size.width,
-                                 fromViewController.view.bounds.size.height);
+//    CGRect endFrame = CGRectMake(fromViewController.view.bounds.size.width, 0,
+//                                 fromViewController.view.bounds.size.width,
+//                                 fromViewController.view.bounds.size.height);
     
     [UIView animateWithDuration:[self transitionDuration:transitionContext]
                           delay:0
