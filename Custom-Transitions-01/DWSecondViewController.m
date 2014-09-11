@@ -31,7 +31,7 @@
 	[self.view addConstraint:[NSLayoutConstraint constraintWithItem:firstBtn
                                                           attribute:NSLayoutAttributeCenterX
                                                           relatedBy:NSLayoutRelationEqual
-                                                             toItem:self.view
+                                                             toItem:self.backgroundView
                                                           attribute:NSLayoutAttributeCenterX
                                                          multiplier:1
                                                            constant:0]];
@@ -39,7 +39,7 @@
 	[self.view addConstraint:[NSLayoutConstraint constraintWithItem:firstBtn
                                                           attribute:NSLayoutAttributeCenterY
                                                           relatedBy:NSLayoutRelationEqual
-                                                             toItem:self.view
+                                                             toItem:self.backgroundView
                                                           attribute:NSLayoutAttributeCenterY
                                                          multiplier:1
                                                            constant:0]];
@@ -55,7 +55,7 @@
 	[self.view addConstraint:[NSLayoutConstraint constraintWithItem:thirdBtn
                                                           attribute:NSLayoutAttributeCenterX
                                                           relatedBy:NSLayoutRelationEqual
-                                                             toItem:self.view
+                                                             toItem:self.backgroundView
                                                           attribute:NSLayoutAttributeCenterX
                                                          multiplier:1
                                                            constant:0]];
@@ -63,7 +63,7 @@
 	[self.view addConstraint:[NSLayoutConstraint constraintWithItem:thirdBtn
                                                           attribute:NSLayoutAttributeCenterY
                                                           relatedBy:NSLayoutRelationEqual
-                                                             toItem:self.view
+                                                             toItem:self.backgroundView
                                                           attribute:NSLayoutAttributeCenterY
                                                          multiplier:1
                                                            constant:40]];
