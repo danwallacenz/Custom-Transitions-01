@@ -103,7 +103,7 @@
                                                               attribute:NSLayoutAttributeTrailing
                                                               relatedBy:NSLayoutRelationLessThanOrEqual
                                                                  toItem:toViewController.view
-                                                              attribute:NSLayoutAttributeLeading
+                                                              attribute:NSLayoutAttributeTrailing
                                                              multiplier:1.0
                                                                constant:-width];
 //    toViewController.view.superview.translatesAutoresizingMaskIntoConstraints = NO;
