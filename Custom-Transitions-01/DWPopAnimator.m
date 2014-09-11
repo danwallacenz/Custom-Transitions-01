@@ -7,6 +7,7 @@
 //
 
 #import "DWPopAnimator.h"
+#import "DWXXViewController.h"
 
 @implementation DWPopAnimator
 
@@ -61,6 +62,9 @@
     // Initially position to ViewController to the left.
 //    NSLayoutConstraint *toViewControllerInitialConstraint;
     
+    
+    NSArray *fromViewControllerConstraints = ((DWXXViewController *)fromViewController).view.constraints;
+    NSArray *toViewControllerConstraints = ((DWXXViewController *)toViewController).view.constraints;
     
     toViewController.view.frame =  CGRectMake(-fromViewController.view.bounds.size.width, 0,
                                               fromViewController.view.bounds.size.width,
