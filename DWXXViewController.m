@@ -36,17 +36,20 @@
     
 //        self.constraintsAdded = YES;
 
+    
+    self.view.layer.borderWidth = 2.0f;
     self.backgroundView = [[UIView alloc]initWithFrame:CGRectZero];
+    self.backgroundView.layer.borderWidth = 2.0f;
     [self.view addSubview: self.backgroundView];
     
     // Positioning Constraints
     self.backgroundView.translatesAutoresizingMaskIntoConstraints = NO;
 //    self.view.translatesAutoresizingMaskIntoConstraints = NO;
-    NSDictionary *bindings = @{@"colorView":self.backgroundView};
+    NSDictionary *bindings = @{@"backgroundView":self.backgroundView};
 
     // Stretch horizontally - temporary insets.
     NSArray *colorViewHorizontalConstraints
-    = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[colorView]-|"
+    = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(20@999)-[backgroundView]-(20@999)-|"
                                               options:0
                                               metrics:nil
                                                 views:bindings];
@@ -54,15 +57,14 @@
 
     // Stretch vertically - temporary insets.
     NSArray *colorViewVerticalConstraints
-    = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[colorView]-|"
+    = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[backgroundView]-|"
                                               options:0
                                               metrics:nil
                                                 views:bindings];
     [self.view addConstraints:colorViewVerticalConstraints];
     
-    NSLog(@"self.colorView.frame = %@",NSStringFromCGRect(self.backgroundView.frame));
+    NSLog(@"%@ viewDidLoad - backgroundView.frame = %@",[self class], NSStringFromCGRect(self.backgroundView.frame));
     
-//    [self.colorView setBackgroundColor:[UIColor magentaColor]];
     
 }
 

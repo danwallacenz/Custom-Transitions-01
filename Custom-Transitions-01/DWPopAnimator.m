@@ -66,10 +66,66 @@
     NSArray *fromViewControllerConstraints = ((DWXXViewController *)fromViewController).view.constraints;
     NSArray *toViewControllerConstraints = ((DWXXViewController *)toViewController).view.constraints;
     
-    toViewController.view.frame =  CGRectMake(-fromViewController.view.bounds.size.width, 0,
-                                              fromViewController.view.bounds.size.width,
-                                              fromViewController.view.bounds.size.height);
+    NSLog(@"fromViewController.view.frame = %@", NSStringFromCGRect(fromViewController.view.frame));
+    NSLog(@"toViewController.view.frame = %@", NSStringFromCGRect(toViewController.view.frame));
     
+   
+    
+//    [toViewController.view removeConstraints:toViewControllerConstraints];
+    
+    NSDictionary *bindings = @{@"toBackgroundView":((DWXXViewController *)toViewController).backgroundView,
+                               @"toView":((DWXXViewController *)toViewController).view,
+                               @"fromBackgroundView":((DWXXViewController *)fromViewController).backgroundView,
+                               @"fromView":((DWXXViewController *)fromViewController).view};
+    
+    // Stretch horizontally - temporary insets.
+    NSDictionary *metrics = @{@"width": @(toViewController.view.frame.size.width)};
+    
+//    NSArray *toViewHorizontalConstraints
+//    = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[toBackgroundView(==width)]"
+//                                              options:0
+//                                              metrics:metrics
+//                                                views:bindings];
+//    [toViewController.view addConstraints:toViewHorizontalConstraints];
+    
+    
+    
+    // Stretch vertically - temporary insets.
+//    NSArray *toViewVerticalConstraints
+//        = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[toBackgroundView]-|"
+//                                              options:0
+//                                              metrics:metrics
+//                                                views:bindings];
+//    [toViewController.view addConstraints:toViewVerticalConstraints];
+    
+    CGFloat width = toViewController.view.frame.size.width;
+    NSLayoutConstraint *toViewOffsetConstraint = [NSLayoutConstraint constraintWithItem:((DWXXViewController *)toViewController).backgroundView
+                                                              attribute:NSLayoutAttributeTrailing
+                                                              relatedBy:NSLayoutRelationLessThanOrEqual
+                                                                 toItem:toViewController.view
+                                                              attribute:NSLayoutAttributeLeading
+                                                             multiplier:1.0
+                                                               constant:-width];
+//    toViewController.view.superview.translatesAutoresizingMaskIntoConstraints = NO;
+    [toViewController.view addConstraint:toViewOffsetConstraint];
+    [toViewController.view layoutIfNeeded];
+    //
+//    toViewController.view.frame =  CGRectMake(-fromViewController.view.bounds.size.width, 0,
+//                                              fromViewController.view.bounds.size.width,
+//                                              fromViewController.view.bounds.size.height);
+    
+//    NSLayoutConstraint *fromViewOffsetConstraint
+//        = [NSLayoutConstraint constraintWithItem:((DWXXViewController *)fromViewController).backgroundView
+//                                      attribute:NSLayoutAttributeLeading
+//                                      relatedBy:NSLayoutRelationGreaterThanOrEqual
+//                                         toItem:fromViewController.view
+//                                      attribute:NSLayoutAttributeTrailing
+//                                     multiplier:1.0
+//                                       constant:width];
+//    [fromViewController.view addConstraint:fromViewOffsetConstraint];
+//    [fromViewController.view layoutIfNeeded];
+    
+    // TODO Make this frame into constraints
     CGRect endFrame = CGRectMake(fromViewController.view.bounds.size.width, 0,
                                  fromViewController.view.bounds.size.width,
                                  fromViewController.view.bounds.size.height);
@@ -78,8 +134,15 @@
                           delay:0
                         options:0
                      animations:^{
+                         toViewOffsetConstraint.constant = 0;
+                         [toViewController.view layoutIfNeeded];
+//                         
+//                         fromViewOffsetConstraint.constant = 0;
+//                         [fromViewController.view layoutIfNeeded];
                          
-                         toViewController.view.frame = fromViewController.view.frame;
+//                         toViewController.view.frame = fromViewController.view.frame;
+                         
+                         
                          fromViewController.view.frame = endFrame;
 //                         NSLog(@"ANIMATING - POP. Interactive gesture recognizer takes over from here.");
                          

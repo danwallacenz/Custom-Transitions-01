@@ -45,6 +45,7 @@
                                                            constant:0]];
     
     self.backgroundView.backgroundColor = [UIColor greenColor];
+//    self.view.backgroundColor = [self.backgroundView.backgroundColor colorWithAlphaComponent:0.6];
 //    [self.colorView setBackgroundColor: [[UIColor lightGrayColor] colorWithAlphaComponent:0.2]];
     
     
