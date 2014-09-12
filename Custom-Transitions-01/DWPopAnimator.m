@@ -36,15 +36,31 @@
     
 
     CGFloat width = toViewController.view.frame.size.width;
-    NSLayoutConstraint *toViewOffsetConstraint = [NSLayoutConstraint constraintWithItem:((DWXXViewController *)toViewController).backgroundView
-                                                              attribute:NSLayoutAttributeTrailing
-                                                              relatedBy:NSLayoutRelationLessThanOrEqual
-                                                                 toItem:toViewController.view
-                                                              attribute:NSLayoutAttributeTrailing
-                                                             multiplier:1.0
-                                                               constant:-width];
+    
+    NSLayoutConstraint *toViewTrailingOffsetConstraint
+        = [NSLayoutConstraint constraintWithItem:((DWXXViewController *)toViewController).backgroundView
+                                      attribute:NSLayoutAttributeTrailing
+                                      relatedBy:NSLayoutRelationLessThanOrEqual
+                                         toItem:toViewController.view
+                                      attribute:NSLayoutAttributeTrailing
+                                     multiplier:1.0
+                                       constant:-width];
+    
+    [toViewController.view addConstraint:toViewTrailingOffsetConstraint];
+    
+    NSLayoutConstraint *toViewLeadingOffsetConstraint
+        = [NSLayoutConstraint constraintWithItem:((DWXXViewController *)toViewController).backgroundView
+                                      attribute:NSLayoutAttributeLeading
+                                      relatedBy:NSLayoutRelationLessThanOrEqual
+                                         toItem:toViewController.view
+                                      attribute:NSLayoutAttributeLeading
+                                     multiplier:1.0
+                                       constant:-width];
+        [toViewController.view addConstraint:toViewLeadingOffsetConstraint];
+    
 
-    [toViewController.view addConstraint:toViewOffsetConstraint];
+    [toViewController.view addConstraint:toViewTrailingOffsetConstraint];
+    
     [toViewController.view layoutIfNeeded];
     //
 //    toViewController.view.frame =  CGRectMake(-fromViewController.view.bounds.size.width, 0,
@@ -53,7 +69,7 @@
     
     
     // From VC offset
-    NSLayoutConstraint *fromViewOffsetConstraint
+    NSLayoutConstraint *fromViewLeadingOffsetConstraint
         = [NSLayoutConstraint constraintWithItem:((DWXXViewController *)fromViewController).backgroundView
                                       attribute:NSLayoutAttributeLeading
                                       relatedBy:NSLayoutRelationLessThanOrEqual
@@ -61,7 +77,7 @@
                                       attribute:NSLayoutAttributeLeading
                                      multiplier:1.0
                                        constant:0.0];
-    [fromViewController.view addConstraint:fromViewOffsetConstraint];
+    [fromViewController.view addConstraint:fromViewLeadingOffsetConstraint];
     
     [fromViewController.view layoutIfNeeded];
     
@@ -74,10 +90,11 @@
                           delay:0
                         options:0
                      animations:^{
-                         toViewOffsetConstraint.constant = 0.0;
+                        toViewLeadingOffsetConstraint.constant = 0.0;
+                        toViewTrailingOffsetConstraint.constant = 0.0;
                          [toViewController.view layoutIfNeeded];
 //                         
-                         fromViewOffsetConstraint.constant = -width;
+                         fromViewLeadingOffsetConstraint.constant = -width;
                          [fromViewController.view layoutIfNeeded];
                          
 //                         toViewController.view.frame = fromViewController.view.frame;
@@ -88,8 +105,9 @@
                          
                      } completion:^(BOOL finished) {
                          
-                         [toViewController.view removeConstraint:toViewOffsetConstraint];
-                         [fromViewController.view removeConstraint:fromViewOffsetConstraint];
+                         [toViewController.view removeConstraint:toViewLeadingOffsetConstraint];
+                         [toViewController.view removeConstraint:toViewTrailingOffsetConstraint];
+                         [fromViewController.view removeConstraint:fromViewLeadingOffsetConstraint];
                          
                          [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
                          
